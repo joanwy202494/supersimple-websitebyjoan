@@ -1,16 +1,23 @@
 @media screen and (min-width: 900px){}
 @media screen and (min-width: 400px){}
 
-/*10/4 doesnt work*/
-.target.animated {
-    opacity: 1; /* Fade in effect */
+
+.animated{
+    opacity: 1;
+    transition: all 1s ease 0s;
+    animation: an 1.5s ease-out 0s forwards;
+}
+
+.animateddiagram{
+    opacity: 1;
+    transition: all 1s ease 0s;
+    animation: conceptdiagraman 2s ease-out 0s forwards;
 }
 
 
 body {
-    overflow: hidden;
     width: 100vw;
-    height: 200vh;
+    height: 100vh;
     margin:0;
     padding:0;
     background-color:#F1F1F1;
@@ -71,10 +78,14 @@ li:nth-child(23) { animation-delay: 2.6s }
 li:nth-child(24) { animation-delay: 2.7s }
 li:nth-child(25) { animation-delay: 2.8s }
 
-
 @keyframes an{
     0%{opacity: 0;}
     100%{opacity: 1;}
+}
+
+#container{
+    position: relative;
+    height: 100vh;
 }
 
 
@@ -296,7 +307,7 @@ a{
     top:210vh;
 }
 
-.conceptlayout{
+#conceptlayout{
     display: grid;
     grid-auto-columns: 140px;
     grid-auto-rows: 140px;
@@ -363,17 +374,13 @@ a{
 #conceptcontent1 {
     grid-row:5/6;
     grid-column:3/7;
-    opacity: 0;
     line-height: 20px;
-    animation: an 1s ease-out 2s forwards;
 }
 
 #conceptcontent2 {
     grid-row:6/7;
     grid-column:3/7;
-    opacity: 0;
     line-height: 20px;
-    animation: an 1s ease-out 2.2s forwards;
 }
 
 .conceptprogressyear{
@@ -384,76 +391,56 @@ a{
 #conceptprogressyear1{
     grid-row:8/9;
     grid-column:3/4;
-    opacity: 0;
-    animation: an 1s ease-out 3.1s forwards;
 }
 
 #conceptprogressyear2{
     grid-row:9/10;
     grid-column:3/4;
-    opacity: 0;
-    animation: an 1s ease-out 3.2s forwards;
 }
 
 #conceptprogressyear3{
     grid-row:10/11;
     grid-column:3/4;
-    opacity: 0;
-    animation: an 1s ease-out 3.3s forwards;
 }
 
 #conceptprogressyear4{
     grid-row:11/12;
     grid-column:3/4;
-    opacity: 0;
-    animation: an 1s ease-out 3.4s forwards;
 }
 
 #conceptprogressyear5{
     grid-row:12/13;
     grid-column:3/4;
-    opacity: 0;
-    animation: an 1s ease-out 3.5s forwards;
 }
 
 #conceptprogresscontent1 {
     font-size:8px;
     grid-row:8/9;
     grid-column:4/8;
-    opacity: 0;
-    animation: an 1s ease-out 3s forwards;
 }
 
 #conceptprogresscontent2 {
     font-size:8px;
     grid-row:9/10;
     grid-column:4/8;
-    opacity: 0;
-    animation: an 1s ease-out 3.1s forwards;
 }
 
 #conceptprogresscontent3 {
     font-size:8px;
     grid-row:10/11;
     grid-column:4/8;
-    opacity: 0;
-    animation: an 1s ease-out 3.2s forwards;
 }
 
 #conceptprogresscontent4 {
     font-size:8px;
     grid-row:11/12;
     grid-column:4/8;
-    opacity: 0;
-    animation: an 1s ease-out 3.3s forwards;
 }
 
 #conceptprogresscontent5 {
     font-size:8px;
     grid-row:12/13;
     grid-column:4/8;
-    opacity: 0;
-    animation: an 1s ease-out 3.4s forwards;
 }
 
 
@@ -494,7 +481,7 @@ a{
     animation: conceptblockshorteran 2s ease-out 4s forwards,moveGradient 10s linear infinite;
 }
 
-.aboutmelayout{
+#aboutmelayout{
     display: grid;
     grid-auto-columns: 140px;
     grid-auto-rows: 140px;
@@ -506,9 +493,6 @@ a{
     grid-row:4/5;
     grid-column:3/8;
     line-height: 20px;
-    opacity: 0;
-    transition: all 1s ease 0s;
-    animation: an 1.5s ease-out 0s forwards;
 }
 
 .conceptaboutmeimage{
@@ -561,57 +545,41 @@ a{
 #aboutmediagramblack1 {
     grid-row:20/21;
     grid-column:1/2;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 0s forwards;
 }
 
 #aboutmediagramblack2 {
     grid-row:23/24;
     grid-column:2/3;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1.5s forwards;
 }
 
 #aboutmediagramblack3 {
     grid-row:22/23;
     grid-column:3/4;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1.3s forwards;
 }
 
 #aboutmediagramblack4 {
     grid-row:10/11;
     grid-column:7/8;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1s forwards;
 }
 
 #aboutmediagramblack5 {
     grid-row:12/13;
     grid-column:10/11;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1.5s forwards;
 }
 
 #aboutmediagramblack6 {
     grid-row:20/21;
     grid-column:13/14;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 2s forwards;
 }
 
 #aboutmediagramblack7 {
     grid-row:20/21;
     grid-column:24/25;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 0.5s forwards;
 }
 
 #aboutmediagramblack8 {
     grid-row:12/13;
     grid-column:22/23;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1s forwards;
 }
 
 .aboutmediagramwhite {
@@ -638,8 +606,6 @@ a{
     grid-column:2/3;
     width: 120px;
     height: 40px;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1s forwards;
 }
 
 #aboutmediagramwhite2 {
@@ -647,8 +613,6 @@ a{
     grid-column:7/8;
     width: 80px;
     height: 40px;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1.5s forwards;
 }
 
 #aboutmediagramwhite3 {
@@ -656,8 +620,6 @@ a{
     grid-column:26/27;
     width: 60px;
     height: 40px;
-    opacity: 0;
-    animation: conceptdiagraman 2s ease-out 1.2s forwards;
 }
 
 

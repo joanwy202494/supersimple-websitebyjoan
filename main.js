@@ -1,50 +1,39 @@
-/*intersection observer*/
-document.addEventListener('DOMContentLoaded', () => {
-  const options = {
-      root: null, // Use the viewport as the container
-      rootMargin: '0px', // No offset
-      threshold: 0, // Trigger as soon as any part of the element is visible
+/*intersection observer
+remember dont overlap multiple animation in CSS, otherwise doesnt work*/
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0,
   };
-
-  const callback = function (entries, observer) {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('animated');
-              observer.unobserve(entry.target); // Stop observing once it is visible
-          }
-      });
-  };
-
-  const observer = new IntersectionObserver(callback, options);
-  const targets = document.querySelectorAll('.target');
   
-  targets.forEach(target => {
-      observer.observe(target); // Start observing each target
-  });
-});
-/*
-const options = { //Moved the declaration of options above the IntersectionObserver instantiation.
-  root: null, // use the document's viewport as the container
-  rootMargin: '0px', // offsets added to each side of the intersection 
-  threshold: 0, // percentage of the target element which is visible
-};
-
-const callback = function (entries) {
+const callback1 = function (entries) {
   entries.forEach(entry => {
       if (entry.isIntersecting) {
-          entry.target.classList.add('animated');
-          observer.unobserve(entry.target);
+            entry.target.classList.add('animated');
+            observer1.unobserve(entry.target);
       }
   });
 };
 
-const observer = new IntersectionObserver(callback, options);
-const targets = document.querySelectorAll('.target');
-targets.forEach(target => {
-  observer.observe(target);
-});
+const observer1 = new IntersectionObserver(callback1, options);
+const targets1 = document.querySelectorAll('.target');
+targets1.forEach(target => {observer1.observe(target);});
 
-*/
+
+const callback2 = function (entries) {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('animateddiagram');
+          observer2.unobserve(entry.target);
+      }
+  });
+};
+
+const observer2 = new IntersectionObserver(callback2, options);
+const targets2 = document.querySelectorAll('.target2');
+targets2.forEach(target => {observer2.observe(target);});
+
+
 
 
 /*navbar*/
@@ -76,6 +65,12 @@ function funcNavbar() {
       navbarcontact.style.display = "none";
   }
 }
+
+/*extra button*/
+document.getElementById('navbarextra').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent any default action
+  // Add your custom logic here
+});
 
 
 /*change work content*/
