@@ -1,19 +1,10 @@
-@media screen and (min-width: 900px){}
-@media screen and (min-width: 400px){}
+@media (min-width: 576px) {font-size: 1.5em}
+@media (min-width: 768px) {font-size: 1.1em}
+@media (min-width: 992px) {}
+@media (min-width: 1200px) {
+    max-width: 1280px;
 
-
-.animated{
-    opacity: 1;
-    transition: all 1s ease 0s;
-    animation: an 1.5s ease-out 0s forwards;
 }
-
-.animateddiagram{
-    opacity: 1;
-    transition: all 1s ease 0s;
-    animation: conceptdiagraman 2s ease-out 0s forwards;
-}
-
 
 body {
     width: 100vw;
@@ -357,6 +348,17 @@ a{
     100% {background-position: 0% 0%;}
 }
 
+.animated{
+    opacity: 1;
+    transition: all 1s ease 0s;
+    animation: an 1.5s ease-out 0s forwards;
+}
+
+.animateddiagram{
+    opacity: 1;
+    transition: all 1s ease 0s;
+    animation: conceptdiagraman 2s ease-out 0s forwards;
+}
 
 #progresslayout{
     display: grid;
