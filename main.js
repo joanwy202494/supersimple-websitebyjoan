@@ -1,46 +1,50 @@
-/*conceptchangediagram
-var click_count = 4;
+/*intersection observer*/
+document.addEventListener('DOMContentLoaded', () => {
+  const options = {
+      root: null, // Use the viewport as the container
+      rootMargin: '0px', // No offset
+      threshold: 0, // Trigger as soon as any part of the element is visible
+  };
 
+  const callback = function (entries, observer) {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('animated');
+              observer.unobserve(entry.target); // Stop observing once it is visible
+          }
+      });
+  };
 
-a.addEventListener("click", page1, false);
+  const observer = new IntersectionObserver(callback, options);
+  const targets = document.querySelectorAll('.target');
+  
+  targets.forEach(target => {
+      observer.observe(target); // Start observing each target
+  });
+});
+/*
+const options = { //Moved the declaration of options above the IntersectionObserver instantiation.
+  root: null, // use the document's viewport as the container
+  rootMargin: '0px', // offsets added to each side of the intersection 
+  threshold: 0, // percentage of the target element which is visible
+};
 
-function page1(){
-  if (click_count % 4 == 0){
-      a.style.backgroundColor="blue";
-      b.style.backgroundColor="blue";
-      c.style.backgroundColor="#f1f1f1";
-      d.style.backgroundColor="#000000";
+const callback = function (entries) {
+  entries.forEach(entry => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          observer.unobserve(entry.target);
+      }
+  });
+};
 
-  } else if (click_count % 4 == 1){
-      a.style.backgroundColor="blue";
-      b.style.backgroundColor="blue";
-      c.style.backgroundColor="#f1f1f1";
-      d.style.backgroundColor="#000000";
+const observer = new IntersectionObserver(callback, options);
+const targets = document.querySelectorAll('.target');
+targets.forEach(target => {
+  observer.observe(target);
+});
 
-  } else if (click_count % 4 == 2){
-      a.style.backgroundColor="yellow";
-      b.style.backgroundColor="yellow";
-      c.style.backgroundColor="#000000";
-      d.style.backgroundColor="#f1f1f1";
-
-  } else if (click_count % 4 == 3){
-      a.style.backgroundColor="green"
-      b.style.backgroundColor="yellow";
-      c.style.backgroundColor="#000000";
-      d.style.backgroundColor="#f1f1f1";
-}
-click_count++;
-}
-
-
-
-const wholepage=document.getElementById("page1");
-const a=document.getElementById("diagramLeftTop");
-const b=document.getElementById("diagramRightTop");
-const c=document.getElementById("diagramLeftBottom");
-const d=document.getElementById("diagramRightBottom");
 */
-
 
 
 /*navbar*/
@@ -50,52 +54,38 @@ const navbarconcept = document.getElementById("navbarconcept");
 const navbarwork = document.getElementById("navbarwork");
 const navbarextra = document.getElementById("navbarextra");
 const navbartop = document.getElementById("navbartop");
+const navbarcontact = document.getElementById("navbarcontact");
 
-navbarbutton.addEventListener("click",funcNavbar,false);
-function funcNavbar(){
-  if (navbar.style.transform == "translateX(300px)"){
+navbarbutton.addEventListener("click", funcNavbar, false);
+
+function funcNavbar() {
+  if (navbar.style.transform === "translateX(300px)" || navbar.style.transform === "") {
       navbar.style.transform = "translateX(0px)";
-      navbarconcept.style.display = "inline-block";
-      navbarwork.style.display = "inline-block";
-      navbarextra.style.display = "inline-block";
-      navbartop.style.display = "inline-block";
+      navbar.style.borderWidth = "1px";
+      navbarconcept.style.display = "block";
+      navbarwork.style.display = "block";
+      navbarextra.style.display = "block";
+      navbartop.style.display = "block";
+      navbarcontact.style.display = "block";
   } else {
       navbar.style.transform = "translateX(300px)";
       navbarconcept.style.display = "none";
       navbarwork.style.display = "none";
       navbarextra.style.display = "none";
       navbartop.style.display = "none";
+      navbarcontact.style.display = "none";
   }
 }
 
 
-/* 9/14: retrigger animation doesn't work
-
-navbarbutton.addEventListener("click",funcNavbar,false);
-function funcNavbar(){
-  if (navbar.style.display == "none"){
-      navbar.style.display = "block";
-      navbar.classList.add("navbarOut")
-      setTimeout((function(){
-        navbar.classList.remove("navbarOut"),1000
-       }))
-  } else {
-      navbar.style.display = "none";
-      navbar.classList.add("navbarOn");
-      setTimeout((function(){
-        navbar.classList.remore("navbarOn"),1000
-       }))
-  }
-}
-
-*/
+/*change work content*/
 
 
+const workno1 = document.getElementById("workno1");
+const workno2 = document.getElementById("workno2");
+const workno3 = document.getElementById("workno3");
 
-/*changeworkcontent*/
-const work1 = document.getElementById("work1");
-const work2 = document.getElementById("work2");
-const work3 = document.getElementById("work3");
+const workcontentbackgroundon = document.getElementById("workcontentbackgroundon"); 
 
 const hashtag1 = document.getElementById("workhashtag1");
 const hashtag2 = document.getElementById("workhashtag2");
@@ -113,49 +103,61 @@ const hashtag12 = document.getElementById("workhashtag12");
 const workcontent1 = document.getElementById("workcontent1");
 const workcontent2 = document.getElementById("workcontent2");
 const workcontent3 = document.getElementById("workcontent3");
+const workcontentbelowimage1 = document.getElementById("workcontentbelowimage1");
+const workcontentbelowimage2 = document.getElementById("workcontentbelowimage2");
+const workcontentbelowimage3 = document.getElementById("workcontentbelowimage3");
+
+const workimage1 = document.getElementById("workimage1");
+const workimage2 = document.getElementById("workimage2");
+const workimage3 = document.getElementById("workimage3");
 
 
-work1.addEventListener("click", func1, false);
-work2.addEventListener("click", func2, false);
-work3.addEventListener("click", func3, false);
+workno1.addEventListener("click", func1, false);
+workno2.addEventListener("click", func2, false);
+workno3.addEventListener("click", func3, false);
 
 function func1(){
-   work1.setAttribute("style","width:600px");
-   work2.setAttribute("style","width:50px;");
-   work3.setAttribute("style","width:50px;");
-   work1.style.backgroundColor = "white";
-   work2.style.backgroundColor = "black";
-   work3.style.backgroundColor = "black";
-   work1.style.color = "black";
-   work2.style.color = "white";
-   work3.style.color = "white";
-   hashtag1.style.display = "inline-block";
-   hashtag2.style.display = "inline-block";
-   hashtag3.style.display = "inline-block";
-   hashtag4.style.display = "inline-block";
-   hashtag5.style.display = "none";
-   hashtag6.style.display = "none";
-   hashtag7.style.display = "none";
-   hashtag8.style.display = "none";
-   hashtag9.style.display = "none";
-   hashtag10.style.display = "none";
-   hashtag11.style.display = "none";
-   hashtag12.style.display = "none";
-   workcontent1.style.display = "block";
-   workcontent2.style.display = "none";
-   workcontent3.style.display = "none";
+    workno1.style.backgroundColor = "#F1F1F1";
+    workno2.style.backgroundColor = "#222222";
+    workno3.style.backgroundColor = "#222222";
+    workno1.style.color = "#222222";
+    workno2.style.color = "#F1F1F1";
+    workno3.style.color = "#F1F1F1";
+    hashtag1.style.display = "inline-block";
+    hashtag2.style.display = "inline-block";
+    hashtag3.style.display = "inline-block";
+    hashtag4.style.display = "inline-block";
+    for (let i = 5; i <= 12; i++) {
+      document.getElementById(`workhashtag${i}`).style.display = "none";
   }
+  workcontent1.style.display = "block";
+  workcontent2.style.display = "none";
+  workcontent3.style.display = "none";
+  workcontentbelowimage1.style.display = "block";
+  workcontentbelowimage2.style.display = "none";
+  workcontentbelowimage3.style.display = "none";
+
+  workcontentbelowimage1.style.zIndex = 0;
+  workcontentbelowimage2.style.zIndex = -2;
+  workcontentbelowimage3.style.zIndex = -2;
+
+  workimage1.style.display = "block";
+  workimage2.style.display = "none";
+  workimage3.style.display = "none";
+
+  workcontentbackgroundon.style.borderImageSource ="radial-gradient(circle, rgba(242,191,172,1) 4%, rgba(70,109,252,1) 33%, rgba(183,51,210,1) 65%, rgba(76,245,213,1) 100%)";
+
+
+};
+
 
 function func2(){
-   work1.setAttribute("style", "width:50px");
-   work2.setAttribute("style", "width:600px;");
-   work3.setAttribute("style", "width:50px;");
-   work1.style.backgroundColor = "black";
-   work2.style.backgroundColor = "white";
-   work3.style.backgroundColor = "black";
-   work1.style.color = "white";
-   work2.style.color = "black";
-   work3.style.color = "white";
+   workno1.style.backgroundColor = "#222222";
+   workno2.style.backgroundColor = "#F1F1F1";
+   workno3.style.backgroundColor = "#222222";
+   workno1.style.color = "#F1F1F1";
+   workno2.style.color = "#222222";
+   workno3.style.color = "#F1F1F1";
    hashtag1.style.display = "none";
    hashtag2.style.display = "none";
    hashtag3.style.display = "none";
@@ -168,21 +170,34 @@ function func2(){
    hashtag10.style.display = "none";
    hashtag11.style.display = "none";
    hashtag12.style.display = "none";
+   
    workcontent1.style.display = "none";
-   workcontent2.style.display = "block";
+   workcontent2.style.display = "inline-block";
    workcontent3.style.display = "none";
+   workcontentbelowimage1.style.display = "none";
+   workcontentbelowimage2.style.display = "block";
+   workcontentbelowimage3.style.display = "none";
+
+   workcontentbelowimage1.style.zIndex = -2;
+   workcontentbelowimage2.style.zIndex = 0;
+   workcontentbelowimage3.style.zIndex = -2;
+
+   workimage1.style.display = "none";
+   workimage2.style.display = "inline-block";
+   workimage3.style.display = "none";
+
+   workcontentbackgroundon.style.borderImageSource ="radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(76,245,239,1) 45%, rgba(252,70,200,1) 81%)";
+   
   }
 
 function func3(){
-   work1.setAttribute("style", "width:50px");
-   work2.setAttribute("style", "width:50px;");
-   work3.setAttribute("style", "width:600px;");
-   work1.style.backgroundColor = "black";
-   work2.style.backgroundColor = "black";
-   work3.style.backgroundColor = "white";
-   work1.style.color = "white";
-   work2.style.color = "white";
-   work3.style.color = "black";
+   workno1.style.backgroundColor = "#222222";
+   workno2.style.backgroundColor = "#222222";
+   workno3.style.backgroundColor = "#F1F1F1";
+   workno1.style.color = "#F1F1F1";
+   workno2.style.color = "#F1F1F1";
+   workno3.style.color = "#222222";
+
    hashtag1.style.display = "none";
    hashtag2.style.display = "none";
    hashtag3.style.display = "none";
@@ -195,21 +210,22 @@ function func3(){
    hashtag10.style.display = "inline-block";
    hashtag11.style.display = "inline-block";
    hashtag12.style.display = "inline-block";
+
    workcontent1.style.display = "none";
    workcontent2.style.display = "none";
-   workcontent3.style.display = "block";
-  }
+   workcontent3.style.display = "inline-block";
+   workcontentbelowimage1.style.display = "none";
+   workcontentbelowimage2.style.display = "none";
+   workcontentbelowimage3.style.display = "block";
 
-/*
-const ctx = canvas.getContext("2d");
-const width = 4;
-const height = 4;
-const maxWH = Math.max(width, height);
+   workcontentbelowimage1.style.zIndex = -2;
+   workcontentbelowimage2.style.zIndex = -2;
+   workcontentbelowimage3.style.zIndex = 0;
 
-function setup() {
-  ctx.beginPath
-  context.fillStyle = color;
+   workimage1.style.display = "none";
+   workimage2.style.display = "none";
+   workimage3.style.display = "inline-block";
+
+   workcontentbackgroundon.style.borderImageSource ="radial-gradient(circle, rgba(251,130,63,1) 13%, rgba(252,105,70,1) 33%, rgba(170,143,176,1) 62%, rgba(76,245,239,1) 100%)";
+
 }
-*/
-
-
