@@ -1,18 +1,18 @@
 @media (min-width: 576px) {
     body {
-        background-color: red}
+        background-color: red;}
     }
 @media (min-width: 768px) {
     body {
-        background-color: aqua}
+        background-color: aqua;}
     }
 @media (min-width: 992px) {
     body {
-        background-color: yellow}
+        background-color: yellow;}
     }
 @media (min-width: 1200px) {
     body {
-        background-color: purple}
+        background-color: purple;}
     }
 
 body {
@@ -20,7 +20,6 @@ body {
     height: 100vh;
     margin:0;
     padding:0;
-    background-color:#F1F1F1;
     font-family: 'Montserrat';
     font-size: 10px;
     color: #222222;
