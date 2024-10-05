@@ -1,18 +1,20 @@
-@media (min-width: 576px) {
+@media screen and (max-width: 576px) {
     body {
-        background-color: red;}
+    background-color: red;
+    font-size: 3rem;}
     }
-@media (min-width: 768px) {
+@media screen and (max-width: 768px) {
     body {
-        background-color: aqua;}
+    background-color: aqua;}
     }
-@media (min-width: 992px) {
+@media screen and (max-width: 992px) {
     body {
-        background-color: yellow;}
+    background-color: yellow;}
     }
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     body {
-        background-color: purple;}
+    background-color: purple;
+    font-size: 3rem;}
     }
 
 body {
